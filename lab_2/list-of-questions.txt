@@ -1,0 +1,37 @@
+# Я всегда чётко планирую свой день.
+  - Да (HR-Manager, Recruter, Team leader)
+  - Нет (Developer)
+
+# Прежде чем действовать, надо продумать все детали
+  - Да (Team leader)
+  - Нет (Developer, HR-Manager, Recruter)
+
+# Испортить мне настроение совсем просто
+  - Да (Recruter)
+  - Нет (Developer, Team leader, HR-Manager) 
+
+# Когда я ложусь спать, то уже наверняка знаю, что будет завтра
+  - Да (Team leader, Developer)
+  - Нет (HR-Manager, Recruter)
+
+# Я всегда готов рассказать о себе даже новым знакомым
+  - Да (HR-Manager, Recruter, Team leader)
+  - Нет (Developer)
+
+# Перед ответственными делами я всегда составляю план их выполнения
+  - Да (Team leader)
+  - Нет (Developer)
+
+# Считают ли вас друзья общительным 
+  - Да (HR-Manager, Recruter, Team leader)
+  - Нет (Developer, Developer)
+
+# Мне нравится решать задачи, требующие:
+  - Умения считать (Developer, Team leader)
+  - Умения мыслить логически (Developer, Team leader)
+  - Креативности, воображения (Designer)
+
+# Мне нравится изучать работу приложения
+  - Да (Developer, Team leader, QA)
+  - Нет (HR-Manager, Recruter)
+
