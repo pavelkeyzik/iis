@@ -181,8 +181,72 @@
     (printout t "name=" ?x " name=" ?y " age=" ?z crlf)
 )
 
-(reset)
-(facts)
+(defrule Find-data
+    (data ?x&:(floatp ?x)&:(> ?x 0) $?y ?z&:(stringp ?z))
+    =>
+    (printout t "x=" ?x " y=" ?y " z=" ?z crlf)
+)
 
+(reset)
+
+(assert (data 1 2)
+        (data 2 4)
+        (data 9 15)
+)
+
+;; (defrule example
+;;     (data ?x ?y)
+;;     (test (>= (abs (- ?x ?y) ) 3))
+;;     =>
+;;     (printout t ">>> EXAMPLE EEEE" crlf)
+;; )
+
+(assert (error-status unknown))
+(assert (valve broken))
+(assert (pump off))
+
+(defrule system-fault
+    (error-status unknown)
+    (or (temp high)
+        (valve broken)
+        (pump off))
+    =>
+    (printout t ">>> system-fault >>>" crlf)
+)
+
+(defrule system-flow
+    (error-status unknown)
+    (and (valve broken)
+         (pump off))
+    =>
+    (printout t "<<< system-flow >>>" crlf)
+)
+
+(defrule high-flow-rate
+    (pump off)
+    (not (error-status confirm))
+    =>
+    (printout t "<<< hight-flow-rate >>>" crlf)
+)
+
+(defrule example
+    (exists (data 1 2))
+    =>
+    (printout t ">>> EXAMPLE NOT <<<" crlf)    
+)
+
+(defrule example-forall
+    (forall (person (name ?a) (age ?b)))
+    =>
+    (printout t "xxxxXXXxxxx" crlf)
+)
+
+(defrule example-logical
+    (logical (data 1 2))
+    =>
+    (printout t "XXXXX" crlf)
+)
+
+(facts)
 (run)                                               ; Запускает логическое выполнение программы
 (exit)                                              ; Выход из программы
