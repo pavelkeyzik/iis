@@ -96,6 +96,93 @@
 
 (reset)                                             ; Удаляем факты и добавляем initial-fact, так как defrule по умолчанию
                                                     ; сработает только когда будет добавлен inital-fact или initial-object
+(clear)
+(printout t crlf crlf crlf ">>>>>>> 2 SECTION >>>>>>>" crlf)
+;; РАЗДЕЛ 2
+(deffacts data-facts
+    (data 1.0 blue "red")
+    (data 1 blue)
+    (data 1 blue red)
+    (data 1 blue RED)
+    (data 1 blue red 6.9)    
+)
+
+(deftemplate person
+    (slot name)
+    (slot age)
+    (multislot friends)
+)
+
+(deffacts people
+    (person (name Job) (age 20))
+    (person (name Bob) (age 20))
+    (person (name Joe) (age 34))
+    (person (name Sue) (age 34))
+    (person (name Sue) (age 20))
+)
+
+(defrule Find-data
+    (data 1 blue red)
+    =>
+    (printout t crlf "Found data (data 1 blue red)" crlf)
+)
+
+(defrule Find-Bob-20
+    (person (name Bob) (age 20))
+    =>
+    (printout t crlf "Found Bob-20 (person (name Bob) (age 20))" crlf)    
+)
+
+(defrule Find-Bob-30
+    (person (name Bob) (age 30))
+    =>
+    (printout t crlf "Found Bob-30 (person (name Bob) (age 30))" crlf)
+)
+
+; ? - какое-то значение
+; $? - какое-то значение или ничего
+
+(defrule Find-data
+    (data ? blue red $?)
+    =>
+    (printout t crlf "FIND DATA WITH GROUP SYMBOLS" crlf)
+)
+
+(defrule match-all-persons
+    (person
+        (name ?)
+        (age ?)
+        (friends $?))
+    =>
+    (printout t crlf "MATCH ALL PERSONS" crlf)
+)
+
+(defrule match
+    (data $? YELLOW $?)
+    =>
+)
+
+(defrule Find-data
+    (data ? blue ?x $?y)
+    =>
+    (printout t "Found data (data ? blue " ?x " " ?y ")" crlf)
+)
+
+(defrule Find-data
+    (data ?x $?y ?z)
+    =>
+    (printout t "x=" ?x " y=" ?y " z=" ?z crlf)
+)
+
+(defrule Find-2-Coeval-Person
+    (person (name ?x) (age ?z))
+    (person (name ?y) (age ?z))
+    =>
+    (printout t "name=" ?x " name=" ?y " age=" ?z crlf)
+)
+
+(reset)
+(facts)
 
 (run)                                               ; Запускает логическое выполнение программы
 (exit)                                              ; Выход из программы
