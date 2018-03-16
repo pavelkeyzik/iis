@@ -29,6 +29,13 @@
     (needCommunication yes)
   )
   (Vacancy (worktype remote))
+  (a b c d e)
+)
+
+(defrule asdd
+  (a ? ?second ? ?fourth $?)
+  =>
+  (printout t "*** " ?second " - " ?fourth crlf)
 )
 
 ; TEST, AND, OR, NOT
@@ -52,7 +59,7 @@
 (defrule or-rule
   ;; (Profession (year ?year))
   (or (and 
-        (Profession (year ?g &:(and (>= ?g 2) (<= ?g 3))))
+        (Profession (year ?g &=(* ?g 2)))
         (Vacancy (worktype remote))
       )
       (and
@@ -118,8 +125,15 @@
   (printout t "isDeveloper -> " ?name crlf)
 )
 
+(defrule by-address
+  ?fact <- (Profession (name $?))
+  =>
+  ;;(retract ?fact)
+)
+
 (reset)
 (run)
+;; (matches logical-rule)
 ;; (facts)
 ;; (retract 5)
 ;; (facts)

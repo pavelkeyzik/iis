@@ -247,6 +247,13 @@
     (printout t "XXXXX" crlf)
 )
 
+(agenda)
 (facts)
-(run)                                               ; Запускает логическое выполнение программы
+(run 2)                                               ; Запускает логическое выполнение программы
+(list-defrules)
+(printout t "___ LOL >>>>>" crlf)
+(ppdefrule Find-data)
+(printout t "___ LOL <<<<<" crlf)
+(undefrule *)
+(list-defrules)
 (exit)                                              ; Выход из программы
