@@ -44,4 +44,29 @@
 
 (factorial 5)
 
+(defgeneric myMethod
+)
+
+(defmethod + ((?a STRING) (?b STRING))
+    (str-cat ?a ?b)
+)
+
+(printout t (+ 1 2) crlf)
+(printout t (+ "LOL" "KEK") crlf)
+
+(defmethod +
+    (($?any INTEGER (evenp ?current-argument))) ; current-argument это текущий аргумент. Его нельзя нигде использовать больше
+    (div (call-next-method) 2)
+)
+
+(printout t (+ 2 4 6 8) crlf)
+
+(defmethod foo1
+    ((?arg (> (length$ ?any) 1)) $?any)
+    TRUE
+)
+
+(printout t(foo1 1 red 2) crlf)
+(list-defmethods)
+; (get-method-restrictions)
 (exit)
