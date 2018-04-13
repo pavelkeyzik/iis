@@ -225,6 +225,16 @@
     (printout t crlf crlf "Вам подойдёт профессия: " ?xxx crlf)
 )
 
+(defrule restart-system
+    (good-profession-is ?)
+    =>
+    (if (yes-or-no-p "Restart system? (yes/no) " )
+        then
+            (reset)
+            (run)
+    )
+)
+
 (reset)
 (run)
 (exit)
